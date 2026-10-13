@@ -1,0 +1,63 @@
+@model prac7.Models.Feedback
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutView.cshtml";
+}
+
+<div>
+    @Html.Partial("_StudentInfo")
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { style = "color:red;" })
+
+        <table>
+            <tr>
+                <td>@Html.LabelFor(model => model.EnrollmentNo)</td>
+                <td>
+                    @Html.TextBoxFor(model => model.EnrollmentNo)
+                    @Html.ValidationMessageFor(model => model.EnrollmentNo, "", new { style = "color:red;" })
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.StudentName)</td>
+                <td>
+                    @Html.TextBoxFor(model => model.StudentName)
+                    @Html.ValidationMessageFor(model => model.StudentName, "", new { style = "color:red;" })
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Subject)</td>
+                <td>
+                    @Html.TextBoxFor(model => model.Subject)
+                    @Html.ValidationMessageFor(model => model.Subject, "", new { style = "color:red;" })
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Rating)</td>
+                <td>
+                    @Html.TextBoxFor(model => model.Rating)
+                    @Html.ValidationMessageFor(model => model.Rating, "", new { style = "color:red;" })
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Comments)</td>
+                <td>
+                    @Html.TextBoxFor(model => model.Comments)
+                    @Html.ValidationMessageFor(model => model.Comments, "", new { style = "color:red;" })
+                </td>
+            </tr>
+        </table>
+        <br />
+        <p>
+            <input type="submit" value="Submit Feedback" />
+        </p>
+        <br />
+        <p>
+            @Html.ActionLink("Back to Home", "Index", "Feedback") |
+            @Html.ActionLink("View Feedback List", "List", "Feedback")
+        </p>
+    }
+</div>
